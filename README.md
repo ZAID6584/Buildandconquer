@@ -21,11 +21,14 @@ This project showcases a modern, responsive website for an AI-driven traffic man
 - index.html (main page)
 - css/
   - styles.css (main stylesheet)
+  - advanced-features.css (styles for theme switching and location features)
 - js/
   - main.js (navigation and UI functionality)
-  - simulation.js (traffic simulation visualization)
+  - traffic.js (traffic visualization and Bangalore routes)
+  - advanced-features.js (theme switching, location services, and route optimization)
 - images/ (website images)
 - README.md (this file)
+- favicon.ico
 ```
 
 ## Running the Website
