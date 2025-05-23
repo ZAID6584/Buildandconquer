@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SmartTrafficAI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5E60CE;
+            --primary-light: #7862F2;
+            --primary-dark: #3F37C9;
+            --secondary: #64DFDF;
+            --accent: #72EFDD;
+            --background: #F8F9FE;
+            --card-bg: #FFFFFF;
+            --text-dark: #2B2D42;
+            --text-muted: #8D99AE;
+            --border-color: #EDF2F7;
+            --error: #E53E3E;
+            --success: #48BB78;
+            --warning: #F6E05E;
+            --info: #4299E1;
+            --shadow: 0 10px 25px rgba(94, 96, 206, 0.07);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--background);
+            color: var(--text-dark);
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .login-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Left panel - Illustration */
+        .login-illustration {
+            flex: 1.2;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-illustration::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            background: url('https://images.unsplash.com/photo-1597217190944-a649cba72554?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            filter: blur(2px);
+        }
+
+        .illustration-content {
+            position: relative;
+            z-index: 1;
+            max-width: 540px;
+            text-align: left;
+        }
+
+        .app-logo {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .app-logo i {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+        }
+
+        .app-logo h1 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .app-logo span {
+            color: var(--accent);
+        }
+
+        .illustration-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .illustration-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+
+        .feature-icon i {
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        /* Right panel - Form */
+        .login-form-container {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background-color: var(--card-bg);
+        }
+
+        .login-form-wrapper {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-welcome {
+            margin-bottom: 2.5rem;
+        }
+
+        .login-welcome h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .login-welcome p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 3rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            transition: var(--transition);
+            color: var(--text-dark);
+            background-color: var(--background);
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(94, 96, 206, 0.1);
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .password-toggle:hover {
+            color: var(--primary);
+        }
+
+        .error-message {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .custom-checkbox {
+            position: relative;
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-right: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.7rem;
+            color: white;
+            display: none;
+        }
+
+        .custom-checkbox input:checked ~ .checkmark {
+            display: block;
+        }
+
+        .custom-checkbox input:checked ~ .custom-checkbox {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .remember-me input:checked + .custom-checkbox {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .remember-me label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            font-size: 0.9rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 2rem;
+            font-family: 'Outfit', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(94, 96, 206, 0.2);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .btn-login .spinner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .btn-login.loading .spinner {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .btn-login.loading .btn-text {
+            opacity: 0;
+        }
+
+        .spinner-icon {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: var(--border-color);
+        }
+
+        .divider span {
+            padding: 0 1rem;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background-color: var(--background);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            border-color: transparent;
+        }
+
+        .social-btn.google:hover {
+            color: #DB4437;
+        }
+
+        .social-btn.facebook:hover {
+            color: #4267B2;
+        }
+
+        .social-btn.apple:hover {
+            color: #000000;
+        }
+
+        .signup-link {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .signup-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .success-message {
+            background-color: rgba(72, 187, 120, 0.1);
+            color: var(--success);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            display: none;
+        }
+
+        .success-message.show {
+            display: flex;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .success-message i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            body {
+                overflow-y: auto;
+            }
+            
+            .login-container {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .login-illustration {
+                display: none;
+            }
+            
+            .login-form-container {
+                padding: 2rem 1.5rem;
+                min-height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Left side illustration -->
+        <div class="login-illustration">
+            <div class="illustration-content">
+                <div class="app-logo">
+                    <i class="fas fa-traffic-light"></i>
+                    <h1>Smart<span>Traffic</span>AI</h1>
+                </div>
+                
+                <h1 class="illustration-title">Intelligent Traffic Management at Your Fingertips</h1>
+                <p class="illustration-description">Our AI-powered platform optimizes routes, reduces congestion, and makes your commute smoother than ever before.</p>
+                
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <span>Real-time traffic analysis and prediction</span>
+                    </li>
+                    <li class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <span>Dynamic route optimization to avoid congestion</span>
+                    </li>
+                    <li class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <span>Personalized travel recommendations</span>
+                    </li>
+                    <li class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <span>Smart navigation with incident alerts</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Right side login form -->
+        <div class="login-form-container">
+            <div class="login-form-wrapper">
+                <div class="login-welcome">
+                    <h2>Welcome back</h2>
+                    <p>Sign in to continue to SmartTrafficAI</p>
+                </div>
+                
+                <div class="success-message" id="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Login successful! Redirecting you to dashboard...</span>
+                </div>
+                
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div id="email-error" class="error-message">Please enter a valid email address</div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                            <i class="fas fa-eye password-toggle" id="password-toggle"></i>
+                        </div>
+                        <div id="password-error" class="error-message">Password must be at least 8 characters</div>
+                    </div>
+                    
+                    <div id="login-error" class="error-message">Invalid email or password</div>
+                    
+                    <div class="login-options">
+                        <div class="remember-me">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="remember-me">
+                                <div class="custom-checkbox">
+                                    <i class="fas fa-check checkmark"></i>
+                                </div>
+                                <span>Remember me</span>
+                            </label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn-login" id="btn-login">
+                        <span class="btn-text">Sign In</span>
+                        <div class="spinner">
+                            <div class="spinner-icon"></div>
+                        </div>
+                    </button>
+                </form>
+                
+                <div class="divider">
+                    <span>OR CONTINUE WITH</span>
+                </div>
+                
+                <div class="social-login">
+                    <button class="social-btn google">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button class="social-btn apple">
+                        <i class="fab fa-apple"></i>
+                    </button>
+                </div>
+                
+                <div class="signup-link">
+                    <p>Don't have an account? <a href="signup-redesign.html">Create account</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('login-form');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const emailError = document.getElementById('email-error');
+            const passwordError = document.getElementById('password-error');
+            const loginError = document.getElementById('login-error');
+            const passwordToggle = document.getElementById('password-toggle');
+            const btnLogin = document.getElementById('btn-login');
+            const successMessage = document.getElementById('success-message');
+            const rememberMeCheckbox = document.getElementById('remember-me');
+            
+            // Toggle password visibility
+            passwordToggle.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+            
+            // Custom checkbox styling
+            rememberMeCheckbox.addEventListener('change', function() {
+                const customCheckbox = this.nextElementSibling;
+                if (this.checked) {
+                    customCheckbox.style.backgroundColor = 'var(--primary)';
+                    customCheckbox.style.borderColor = 'var(--primary)';
+                } else {
+                    customCheckbox.style.backgroundColor = 'transparent';
+                    customCheckbox.style.borderColor = 'var(--border-color)';
+                }
+            });
+            
+            // Email validation
+            emailInput.addEventListener('blur', function() {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailInput.value) && emailInput.value !== '') {
+                    emailError.classList.add('show');
+                } else {
+                    emailError.classList.remove('show');
+                }
+            });
+            
+            // Password validation
+            passwordInput.addEventListener('blur', function() {
+                if (passwordInput.value.length < 8 && passwordInput.value !== '') {
+                    passwordError.classList.add('show');
+                } else {
+                    passwordError.classList.remove('show');
+                }
+            });
+            
+            // Form submission
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                
+                // Validate email
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailInput.value)) {
+                    emailError.classList.add('show');
+                    isValid = false;
+                } else {
+                    emailError.classList.remove('show');
+                }
+                
+                // Validate password
+                if (passwordInput.value.length < 8) {
+                    passwordError.classList.add('show');
+                    isValid = false;
+                } else {
+                    passwordError.classList.remove('show');
+                }
+                
+                if (isValid) {
+                    // Show loading animation
+                    btnLogin.classList.add('loading');
+                    
+                    // Simulate API call
+                    setTimeout(() => {
+                        // For demo purposes, check if email is "demo@example.com" and password is "password123"
+                        if (emailInput.value === "demo@example.com" && passwordInput.value === "password123") {
+                            // Hide login error if visible
+                            loginError.classList.remove('show');
+                            
+                            // Show success message
+                            successMessage.classList.add('show');
+                            
+                            // Store logged in status in localStorage
+                            localStorage.setItem('isLoggedIn', 'true');
+                            
+                            // Store user info if remember me is checked
+                            if (rememberMeCheckbox.checked) {
+                                localStorage.setItem('userEmail', emailInput.value);
+                            }
+                            
+                            // Redirect to dashboard after a short delay
+                            setTimeout(() => {
+                                window.location.href = 'dashboard-redesign.html';
+                            }, 1500);
+                        } else {
+                            // Show login error
+                            loginError.classList.add('show');
+                            
+                            // Stop loading animation
+                            btnLogin.classList.remove('loading');
+                        }
+                    }, 1500);
+                }
+            });
+            
+            // Auto-fill demo credentials when clicking the email field 3 times (hidden feature)
+            let clickCount = 0;
+            emailInput.addEventListener('click', function() {
+                clickCount++;
+                if (clickCount >= 3) {
+                    emailInput.value = 'demo@example.com';
+                    passwordInput.value = 'password123';
+                    clickCount = 0;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
