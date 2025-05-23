@@ -1,0 +1,362 @@
+/* Advanced Features Styling */
+
+/* Theme Switcher */
+.theme-switcher {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 1000;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: var(--transition);
+}
+
+.theme-switcher.collapsed {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.theme-switcher-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.theme-option:hover {
+    background-color: var(--light-gray);
+}
+
+.theme-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.theme-color.default {
+    background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+}
+
+.theme-color.cyberpunk {
+    background: linear-gradient(135deg, #0d0221 0%, #ff2a6d 100%);
+}
+
+.theme-color.retro {
+    background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+}
+
+/* Location Search */
+.location-search {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 900;
+    width: 300px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 15px;
+    transition: var(--transition);
+}
+
+.location-search input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    margin-bottom: 10px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.location-search input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.location-options {
+    display: flex;
+    gap: 10px;
+}
+
+.find-me-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.find-me-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.search-results {
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.search-result-item {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--light-gray);
+    transition: var(--transition);
+}
+
+.search-result-item:hover {
+    background-color: var(--light-gray);
+}
+
+/* Route Panel */
+.route-panel {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 900;
+    width: 300px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 15px;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.route-panel h3 {
+    margin-top: 0;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+}
+
+.route-endpoints {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.endpoint {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.endpoint-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--light-text);
+}
+
+.endpoint-icon.start {
+    background-color: var(--primary-color);
+}
+
+.endpoint-icon.end {
+    background-color: var(--accent-color);
+}
+
+.endpoint-address {
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.route-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.route-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.route-actions button {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.optimize-btn {
+    background-color: var(--success-color);
+    color: var(--light-text);
+}
+
+.optimize-btn:hover {
+    filter: brightness(1.1);
+}
+
+.clear-btn {
+    background-color: var(--danger-color);
+    color: var(--light-text);
+}
+
+.clear-btn:hover {
+    filter: brightness(1.1);
+}
+
+/* Cyberpunk-specific styling */
+[data-theme="cyberpunk"] .map-container {
+    filter: saturate(1.2) hue-rotate(-10deg);
+}
+
+[data-theme="cyberpunk"] .find-me-btn {
+    border: 1px solid var(--accent-color);
+    background-color: transparent;
+    color: var(--accent-color);
+}
+
+[data-theme="cyberpunk"] .find-me-btn:hover {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+}
+
+[data-theme="cyberpunk"] .theme-switcher,
+[data-theme="cyberpunk"] .location-search,
+[data-theme="cyberpunk"] .route-panel {
+    border: 1px solid var(--primary-color);
+}
+
+[data-theme="cyberpunk"] .route-panel h3 {
+    color: var(--primary-color);
+}
+
+/* Neon text effect for cyberpunk theme */
+[data-theme="cyberpunk"] .section-header h2 {
+    text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
+}
+
+/* Retro-specific styling */
+[data-theme="retro"] .btn,
+[data-theme="retro"] .find-me-btn {
+    border: 2px solid black;
+    box-shadow: 4px 4px 0px black;
+}
+
+[data-theme="retro"] .theme-switcher,
+[data-theme="retro"] .location-search,
+[data-theme="retro"] .route-panel {
+    border: 2px solid black;
+    box-shadow: 4px 4px 0px black;
+}
+
+[data-theme="retro"] .route-panel h3 {
+    font-family: 'Courier New', monospace;
+}
+
+/* Cyberpunk pulse animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 42, 109, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 42, 109, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 42, 109, 0);
+    }
+}
+
+[data-theme="cyberpunk"] .pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Loading animation */
+.loading-animation {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 20px;
+}
+
+.loading-animation div {
+    position: absolute;
+    top: 8px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.loading-animation div:nth-child(1) {
+    left: 8px;
+    animation: loading1 0.6s infinite;
+}
+
+.loading-animation div:nth-child(2) {
+    left: 8px;
+    animation: loading2 0.6s infinite;
+}
+
+.loading-animation div:nth-child(3) {
+    left: 32px;
+    animation: loading2 0.6s infinite;
+}
+
+.loading-animation div:nth-child(4) {
+    left: 56px;
+    animation: loading3 0.6s infinite;
+}
+
+@keyframes loading1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes loading2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(24px, 0);
+    }
+}
+
+@keyframes loading3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
