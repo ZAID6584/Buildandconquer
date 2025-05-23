@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Traffic Management System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <h1>SmartTraffic<span>AI</span></h1>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#demo">Demo</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Revolutionizing Traffic Management with AI</h1>
+                <p>Smart intersections that adapt to real-time conditions, reducing congestion and waiting times</p>
+                <div class="hero-buttons">
+                    <a href="#demo" class="btn primary">View Demo</a>
+                    <a href="#about" class="btn secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div id="hero-map" class="map-container"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Our Solution</h2>
+                <p>Tackling urban congestion with cutting-edge AI technology</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>The Problem</h3>
+                    <p>Traffic congestion costs billions in lost productivity, increased fuel consumption, and environmental damage. Traditional fixed-time traffic signals fail to adapt to changing traffic patterns.</p>
+                    
+                    <h3>Our Solution</h3>
+                    <p>SmartTrafficAI uses computer vision and reinforcement learning to dynamically adjust traffic signals based on real-time conditions, optimizing flow and reducing wait times.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/traffic-concept.jpg" alt="AI Traffic Management Concept" class="placeholder-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Key Features</h2>
+                <p>Intelligent traffic management that makes a difference</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Computer Vision Detection</h3>
+                    <p>Real-time vehicle and pedestrian detection using advanced deep learning models</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Adaptive AI Learning</h3>
+                    <p>Reinforcement learning algorithms that improve with every traffic cycle</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Predictive Analytics</h3>
+                    <p>Traffic forecasting that anticipates congestion before it happens</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-traffic-light"></i>
+                    </div>
+                    <h3>Multi-Intersection Coordination</h3>
+                    <p>Synchronized traffic control across multiple connected intersections</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <h3>Multi-Modal Support</h3>
+                    <p>Prioritization for public transit, emergency vehicles, and pedestrians</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Real-Time Dashboard</h3>
+                    <p>Comprehensive monitoring interface for traffic management personnel</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <h2>Development Roadmap</h2>
+                <p>Our comprehensive approach to building the future of traffic management</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>1. Problem Understanding</h3>
+                        <p>Define scope, identify key metrics, and decide on data sources</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2. Data Collection</h3>
+                        <p>Gather historical data, set up real-time acquisition systems</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>3. Traffic Flow Modeling</h3>
+                        <p>Explore traditional models and establish baselines</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>4. AI Model Development</h3>
+                        <p>Computer vision, traffic prediction, and signal optimization</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>5. System Integration</h3>
+                        <p>Combine modules into a complete pipeline with feedback loops</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>6. Simulation & Testing</h3>
+                        <p>Virtual validation using real traffic scenarios</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>7. Deployment</h3>
+                        <p>Pilot installation with monitoring capabilities</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>8. Evaluation & Iteration</h3>
+                        <p>Continuous improvement based on real-world performance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <div class="section-header">
+                <h2>Real-Time Traffic Rerouting</h2>
+                <p>Watch our AI dynamically optimize routes to reduce congestion</p>
+            </div>
+            <div class="demo-content">
+                <div class="demo-controls">
+                    <div class="control-group">
+                        <label for="traffic-condition">Traffic Condition</label>
+                        <select id="traffic-condition">
+                            <option value="normal">Normal</option>
+                            <option value="congested" selected>Congested</option>
+                            <option value="incident">Traffic Incident</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="ai-model">AI Model</label>
+                        <select id="ai-model">
+                            <option value="basic">Basic Routing</option>
+                            <option value="predictive" selected>Predictive AI</option>
+                            <option value="advanced">Advanced Deep Learning</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <button id="simulate-reroute" class="btn primary">Simulate Rerouting</button>
+                        <button id="reset-map" class="btn secondary">Reset Map</button>
+                    </div>
+                </div>
+                <div class="map-visualization">
+                    <div id="traffic-map" class="map-container"></div>
+                    <div class="route-info">
+                        <div class="route-card original">
+                            <h4>Original Route</h4>
+                            <div class="route-stats">
+                                <div class="stat">
+                                    <i class="fas fa-road"></i>
+                                    <p><span id="original-distance">5.4</span> km</p>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-clock"></i>
+                                    <p><span id="original-time">24</span> min</p>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-car"></i>
+                                    <p>Traffic: <span id="original-traffic">Heavy</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="route-card ai">
+                            <h4>AI Optimized Route</h4>
+                            <div class="route-stats">
+                                <div class="stat">
+                                    <i class="fas fa-road"></i>
+                                    <p><span id="ai-distance">6.1</span> km</p>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-clock"></i>
+                                    <p><span id="ai-time">18</span> min</p>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-car"></i>
+                                    <p>Traffic: <span id="ai-traffic">Light</span></p>
+                                </div>
+                            </div>
+                            <div class="efficiency">
+                                <p>Time Saved: <span id="time-saved">25</span>%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Interested in implementing SmartTrafficAI in your city?</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="organization">Organization</label>
+                            <input type="text" id="organization">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>123 AI Boulevard, Smart City, 10001</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@smarttrafficai.com</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>SmartTraffic<span>AI</span></h2>
+                    <p>Intelligent traffic management for smarter cities</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-group">
+                        <h3>Sitemap</h3>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#roadmap">Roadmap</a></li>
+                            <li><a href="#demo">Demo</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-group">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">White Paper</a></li>
+                            <li><a href="#">Case Studies</a></li>
+                            <li><a href="#">API Documentation</a></li>
+                            <li><a href="#">Research Papers</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-group">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SmartTrafficAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/traffic.js"></script>
+</body>
+</html>
